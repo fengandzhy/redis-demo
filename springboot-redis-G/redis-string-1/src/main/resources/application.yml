@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://localhost:3306/redis_G?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+      password: root
+      username: root
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      filters: stat,wall,log4j
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;
+      slowSqlMillis: 500
+  redis:
+    database: 0
+    host: 192.168.78.150
+    port: 6379
+    password: 
+  swagger2: 
+    enabled: true
+mybatis:
+  type-aliases-package: org.zhouhy.redis.domain
+  mapper-locations: classpath:mapper/*.xml
