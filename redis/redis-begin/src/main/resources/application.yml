@@ -3,3 +3,17 @@ spring:
     host: 47.242.251.45
     port: 6379
     password: 123456Xiaoxiong
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 0
+        max-wait: -1ms
+    jedis:      
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 0
+        max-wait: -1ms
+#用这种方式来指定client type
+    client-type: jedis 
