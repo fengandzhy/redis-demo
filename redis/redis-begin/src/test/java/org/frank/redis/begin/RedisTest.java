@@ -1,5 +1,6 @@
 package org.frank.redis.begin;
 
+import org.frank.redis.begin.modules.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,6 +36,16 @@ public class RedisTest {
 
         String str2 = stringRedisTemplate.opsForValue().get("name");
         System.out.println(str2);
+    }
+
+    @Test
+    public void setObjectTest(){
+        User user = new User();
+        user.setId(1);
+        user.setName("张三");
+        user.setPwd("123456");
+
+        redisTemplate.opsForValue().set("user:1",user);
     }
     
 }
