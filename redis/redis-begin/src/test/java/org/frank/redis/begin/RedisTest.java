@@ -26,12 +26,20 @@ public class RedisTest {
     @Test
     public void setStringTest(){
         redisTemplate.opsForValue().set("name", "xdclass111");
-        stringRedisTemplate.opsForValue().set("name", "bbaac");
+        stringRedisTemplate.opsForValue().set("name", "{\"bbaac\":\"aabb\"}");
     }
     
+    /**
+     * 当你做了如下设置, 你就不能用 redisTemplate 取一般的字符串, 你只能用来去json字符串, 什么叫json字符串, 如上所示 "{\"bbaac\":\"aabb\"}" 这个就是json字符串
+     * // 设置key和value的序列化规则
+     * redisTemplate.setKeySerializer(new StringRedisSerializer());
+     * redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+     * 对于一般的字符串, 只能用 stringRedisTemplate 来取
+     * 
+     * */
     @Test
     public void getStringTest(){
-        String str1 = (String)redisTemplate.opsForValue().get("name");
+        Object str1 = redisTemplate.opsForValue().get("name");
         System.out.println(str1);
 
         String str2 = stringRedisTemplate.opsForValue().get("name");

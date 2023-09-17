@@ -9,11 +9,11 @@ spring:
         max-idle: 10
         min-idle: 0
         max-wait: -1ms
-    jedis:      
-      pool:
-        max-active: 10
-        max-idle: 10
-        min-idle: 0
-        max-wait: -1ms
+#    jedis:      
+#      pool:
+#        max-active: 10
+#        max-idle: 10
+#        min-idle: 0
+#        max-wait: -1ms
 #用这种方式来指定client type
-    client-type: jedis 
+    client-type: lettuce 
